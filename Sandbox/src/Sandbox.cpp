@@ -1,8 +1,18 @@
-namespace Defen {
-	__declspec(dllimport) void Print();
-}
+#include "Defen.h"
 
+class Sandbox : public Defen::Application
+{
+public:
+	Sandbox()
+	{
+	}
 
-void main() {
-	Defen::Print();
+	~Sandbox()
+	{
+	}
+};
+
+Defen::Application* Defen::CreateApplication()
+{
+	return new Sandbox();
 }
