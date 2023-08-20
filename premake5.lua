@@ -9,6 +9,11 @@ workspace "Defen"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Defen/vendor/GLFW/include"
+
+include "Defen/vendor/GLFW"
+
 project "Defen"
 	location "Defen"
 	kind "SharedLib"
@@ -16,10 +21,13 @@ project "Defen"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-	
+
 	pchheader "depch.h"
 	pchsource "Defen/src/depch.cpp"
 	
+	
+	staticruntime "on"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -29,7 +37,14 @@ project "Defen"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -47,7 +62,7 @@ project "Defen"
 		{
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
 		}
-	
+
 	filter "configurations:Debug"
 		defines "DE_DEBUG"
 		symbols "On"
@@ -67,7 +82,9 @@ project "Sandbox"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
+	
+	staticruntime "on"
+	
 	files
 	{
 		"%{prj.name}/src/**.h",
