@@ -1,0 +1,3 @@
+[submodule "Defen/vendor/spdlog"]
+	path = Defen/vendor/spdlog
+	url = https://github.com/gabime/spdlog

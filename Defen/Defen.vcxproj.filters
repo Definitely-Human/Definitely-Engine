@@ -27,9 +27,15 @@
     <ClInclude Include="src\Defen\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Defen\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Defen\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Defen\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
