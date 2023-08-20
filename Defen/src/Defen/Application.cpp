@@ -1,3 +1,4 @@
+#include "depch.h"
 #include "Application.h"
 #include "Defen/Events/ApplicationEvent.h"
 #include "Defen/Log.h"

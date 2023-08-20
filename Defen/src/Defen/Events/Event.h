@@ -2,9 +2,6 @@
 
 #include "Defen/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace Defen
 {
 	enum class EventType

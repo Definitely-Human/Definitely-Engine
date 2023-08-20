@@ -16,7 +16,10 @@ project "Defen"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-
+	
+	pchheader "depch.h"
+	pchsource "Defen/src/depch.cpp"
+	
 	files
 	{
 		"%{prj.name}/src/**.h",

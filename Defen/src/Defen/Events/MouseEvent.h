@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Defen
 {
 	class DEFEN_API MouseMovedEvent : public Event
