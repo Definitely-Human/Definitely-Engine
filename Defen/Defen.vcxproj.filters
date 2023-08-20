@@ -4,6 +4,9 @@
     <Filter Include="Defen">
       <UniqueIdentifier>{07A4060D-73B8-2EBE-3C3A-D21DA80D2BEF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Defen\Events">
+      <UniqueIdentifier>{0BA2E8D7-F704-787C-A08A-B0328CCC43FF}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Defen.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Defen\EntryPoint.h">
       <Filter>Defen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Defen\Events\ApplicationEvent.h">
+      <Filter>Defen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Defen\Events\Event.h">
+      <Filter>Defen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Defen\Events\KeyEvent.h">
+      <Filter>Defen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Defen\Events\MouseEvent.h">
+      <Filter>Defen\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Defen\Log.h">
       <Filter>Defen</Filter>
