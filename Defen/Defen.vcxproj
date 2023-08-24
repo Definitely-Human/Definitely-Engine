@@ -88,6 +88,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MDd /MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -116,6 +117,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -160,6 +162,8 @@
     <ClInclude Include="src\Defen\Events\Event.h" />
     <ClInclude Include="src\Defen\Events\KeyEvent.h" />
     <ClInclude Include="src\Defen\Events\MouseEvent.h" />
+    <ClInclude Include="src\Defen\Layer.h" />
+    <ClInclude Include="src\Defen\LayerStack.h" />
     <ClInclude Include="src\Defen\Log.h" />
     <ClInclude Include="src\Defen\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -167,6 +171,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Defen\Application.cpp" />
+    <ClCompile Include="src\Defen\Layer.cpp" />
+    <ClCompile Include="src\Defen\LayerStack.cpp" />
     <ClCompile Include="src\Defen\Log.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\depch.cpp">

@@ -37,6 +37,12 @@
     <ClInclude Include="src\Defen\Events\MouseEvent.h">
       <Filter>Defen\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Defen\Layer.h">
+      <Filter>Defen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Defen\LayerStack.h">
+      <Filter>Defen</Filter>
+    </ClInclude>
     <ClInclude Include="src\Defen\Log.h">
       <Filter>Defen</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Defen\Application.cpp">
+      <Filter>Defen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Defen\Layer.cpp">
+      <Filter>Defen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Defen\LayerStack.cpp">
       <Filter>Defen</Filter>
     </ClCompile>
     <ClCompile Include="src\Defen\Log.cpp">

@@ -14,12 +14,25 @@ namespace Defen {
 	}
 	Application::~Application() {}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+	}
+
 	void Application::Run()
 	{
 		while (m_Running) {
 			glClearColor(0.2039f, 0.3843f, 0.247f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 			m_Window->OnUpdate();
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
 		}
 	}
 
@@ -29,6 +42,13 @@ namespace Defen {
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClosed));
 
 		DE_CORE_TRACE("{0}", e);
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
+		{
+			(*--it)->OnEvent(e);
+			if (e.Handled)
+				break;
+		}
 	}
 
 	bool Application::OnWindowClosed(WindowCloseEvent& e)
