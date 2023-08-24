@@ -1,4 +1,6 @@
 #include "depch.h"
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
 #include "WindowsWindow.h"
 
 #include "Defen/Log.h"
@@ -49,6 +51,8 @@ namespace Defen
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height,
 			m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		DE_CORE_ASSERT(status, "Failed to initialize Glad.");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 
 		SetVSync(true);

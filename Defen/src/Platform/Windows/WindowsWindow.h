@@ -2,7 +2,6 @@
 
 #include "Defen/Window.h"
 
-#include "GLFW/glfw3.h"
 
 namespace Defen {
 	class WindowsWindow : public Window

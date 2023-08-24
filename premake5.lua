@@ -11,8 +11,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Defen/vendor/GLFW/include"
+IncludeDir["Glad"] = "Defen/vendor/Glad/include"
 
 include "Defen/vendor/GLFW"
+include "Defen/vendor/Glad"
 
 project "Defen"
 	location "Defen"
@@ -38,12 +40,14 @@ project "Defen"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -55,7 +59,7 @@ project "Defen"
 		defines
 		{
 			"DE_PLATFORM_WINDOWS",
-			"DE_BUILD_DLL"
+			"DE_BUILD_DLL",
 		}
 
 		postbuildcommands
@@ -64,7 +68,11 @@ project "Defen"
 		}
 
 	filter "configurations:Debug"
-		defines "DE_DEBUG"
+		defines 
+		{
+			"DE_DEBUG",
+			"DE_ENABLE_ASSERTS"
+		}
 		buildoptions "/MDd"
 		symbols "On"
 
