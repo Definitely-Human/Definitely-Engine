@@ -9,7 +9,8 @@ public:
 
 	void OnUpdate() override
 	{
-
+		if (Defen::Input::IsKeyPressed(DE_KEY_TAB))
+			DE_TRACE("Tab is pressed~!");
 	}
 
 	void OnEvent(Defen::Event& event) override

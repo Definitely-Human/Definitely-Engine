@@ -65,6 +65,8 @@
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\Defen\KeyCodes.h" />
+    <ClInclude Include="src\Defen\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Defen\Application.cpp">

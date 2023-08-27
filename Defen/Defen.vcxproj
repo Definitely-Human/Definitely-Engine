@@ -162,9 +162,11 @@
     <ClInclude Include="src\Defen\Events\KeyEvent.h" />
     <ClInclude Include="src\Defen\Events\MouseEvent.h" />
     <ClInclude Include="src\Defen\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Defen\KeyCodes.h" />
     <ClInclude Include="src\Defen\Layer.h" />
     <ClInclude Include="src\Defen\LayerStack.h" />
     <ClInclude Include="src\Defen\Log.h" />
+    <ClInclude Include="src\Defen\MouseButtonCodes.h" />
     <ClInclude Include="src\Defen\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\depch.h" />
