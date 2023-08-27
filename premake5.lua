@@ -1,5 +1,6 @@
 workspace "Defen"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations{
 		"Debug",
@@ -30,7 +31,7 @@ project "Defen"
 	pchsource "Defen/src/depch.cpp"
 	
 	
-	staticruntime "on"
+	staticruntime "off"
 
 	files
 	{
@@ -57,7 +58,6 @@ project "Defen"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -77,17 +77,17 @@ project "Defen"
 			"DE_DEBUG",
 			"DE_ENABLE_ASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "DE_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Debug"
 		defines "DE_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
@@ -98,7 +98,7 @@ project "Sandbox"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
-	staticruntime "on"
+	staticruntime "off"
 	
 	files
 	{
@@ -119,7 +119,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -128,16 +127,16 @@ project "Sandbox"
 		}
 
 	filter "configurations:Debug"
-			defines "DE_DEBUG"
-		buildoptions "/MDd"
-			symbols "On"
+		defines "DE_DEBUG"
+		runtime "Debug"
+		symbols "On"
 
 	filter "configurations:Release"
 		defines "DE_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Debug"
 		defines "DE_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

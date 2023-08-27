@@ -9,7 +9,7 @@ public:
 
 	void OnUpdate() override
 	{
-		DE_INFO("ExampleLayer::Update");
+
 	}
 
 	void OnEvent(Defen::Event& event) override

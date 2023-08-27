@@ -4,6 +4,8 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
+
 namespace Defen {
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
@@ -41,6 +43,7 @@ namespace Defen {
 
 			glClearColor(0.2039f, 0.3843f, 0.247f, 1);
 			//glClear(GL_COLOR_BUFFER_BIT);
+
 		}
 	}
 

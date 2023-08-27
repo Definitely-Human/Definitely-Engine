@@ -59,6 +59,12 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\depch.h" />
+    <ClInclude Include="src\Defen\Input.h">
+      <Filter>Defen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Defen\Application.cpp">
@@ -80,5 +86,11 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\depch.cpp" />
+    <ClCompile Include="src\Defen\Input.cpp">
+      <Filter>Defen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
