@@ -7,6 +7,9 @@
     <Filter Include="Defen\Events">
       <UniqueIdentifier>{0BA2E8D7-F704-787C-A08A-B0328CCC43FF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Defen\ImGui">
+      <UniqueIdentifier>{71C25116-DD77-CA0B-666C-C4E2D220C10F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
@@ -37,6 +40,9 @@
     <ClInclude Include="src\Defen\Events\MouseEvent.h">
       <Filter>Defen\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Defen\ImGui\ImGuiLayer.h">
+      <Filter>Defen\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Defen\Layer.h">
       <Filter>Defen</Filter>
     </ClInclude>
@@ -57,6 +63,9 @@
   <ItemGroup>
     <ClCompile Include="src\Defen\Application.cpp">
       <Filter>Defen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Defen\ImGui\ImGuiLayer.cpp">
+      <Filter>Defen\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Defen\Layer.cpp">
       <Filter>Defen</Filter>

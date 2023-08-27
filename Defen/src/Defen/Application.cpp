@@ -7,8 +7,13 @@
 namespace Defen {
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
+		DE_CORE_ASSERT(!s_Instance, "Application aloready exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 	}
@@ -17,22 +22,25 @@ namespace Defen {
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::Run()
 	{
 		while (m_Running) {
-			glClearColor(0.2039f, 0.3843f, 0.247f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-			m_Window->OnUpdate();
-
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			m_Window->OnUpdate();
+
+			glClearColor(0.2039f, 0.3843f, 0.247f, 1);
+			//glClear(GL_COLOR_BUFFER_BIT);
 		}
 	}
 
