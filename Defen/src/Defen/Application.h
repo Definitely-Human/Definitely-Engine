@@ -6,6 +6,7 @@
 #include "Window.h"
 #include "Events/ApplicationEvent.h"
 #include "Events/Event.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace Defen {
 	class DEFEN_API Application
@@ -25,6 +26,7 @@ namespace Defen {
 		bool OnWindowClosed(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

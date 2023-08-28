@@ -9,11 +9,11 @@ namespace Defen {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& event);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
+		void Begin();
+		void End();
 	private:
 		float m_Time;
 	};

@@ -43,6 +43,12 @@
     <ClInclude Include="src\Defen\ImGui\ImGuiLayer.h">
       <Filter>Defen\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Defen\Input.h">
+      <Filter>Defen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Defen\KeyCodes.h">
+      <Filter>Defen</Filter>
+    </ClInclude>
     <ClInclude Include="src\Defen\Layer.h">
       <Filter>Defen</Filter>
     </ClInclude>
@@ -52,28 +58,32 @@
     <ClInclude Include="src\Defen\Log.h">
       <Filter>Defen</Filter>
     </ClInclude>
-    <ClInclude Include="src\Defen\Window.h">
+    <ClInclude Include="src\Defen\MouseButtonCodes.h">
       <Filter>Defen</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>Platform\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="src\depch.h" />
-    <ClInclude Include="src\Defen\Input.h">
+    <ClInclude Include="src\Defen\Window.h">
       <Filter>Defen</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\Defen\KeyCodes.h" />
-    <ClInclude Include="src\Defen\MouseButtonCodes.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\depch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Defen\Application.cpp">
       <Filter>Defen</Filter>
     </ClCompile>
+    <ClCompile Include="src\Defen\ImGui\ImGuiBuild.cpp">
+      <Filter>Defen\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Defen\ImGui\ImGuiLayer.cpp">
       <Filter>Defen\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Defen\Input.cpp">
+      <Filter>Defen</Filter>
     </ClCompile>
     <ClCompile Include="src\Defen\Layer.cpp">
       <Filter>Defen</Filter>
@@ -84,15 +94,12 @@
     <ClCompile Include="src\Defen\Log.cpp">
       <Filter>Defen</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\depch.cpp" />
-    <ClCompile Include="src\Defen\Input.cpp">
-      <Filter>Defen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
-      <Filter>Platform\Windows</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
