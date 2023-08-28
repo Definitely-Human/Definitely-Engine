@@ -8,6 +8,9 @@
 #include "Events/Event.h"
 #include "ImGui/ImGuiLayer.h"
 
+#include "Defen/Renderer/Shader.h"
+#include "Renderer/Buffer.h"
+
 namespace Defen {
 	class DEFEN_API Application
 	{
@@ -31,6 +34,11 @@ namespace Defen {
 		LayerStack m_LayerStack;
 
 		static Application* s_Instance;
+
+		unsigned int m_VertexArray;
+		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	};
 
 	//To be defined in a client

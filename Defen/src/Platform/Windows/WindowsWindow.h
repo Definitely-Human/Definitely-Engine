@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Defen/Window.h"
-
+#include "Defen/Renderer/GraphicsContext.h"
 
 namespace Defen {
 	class WindowsWindow : public Window
@@ -28,6 +28,7 @@ namespace Defen {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		// Window data for GLFW
 		struct WindowData
