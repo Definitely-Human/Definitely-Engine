@@ -31,6 +31,7 @@ namespace Defen
 		if (it != m_Layers.end())
 		{
 			m_Layers.erase(it);
+			m_LayerInsertIndex--;
 		}
 	}
 

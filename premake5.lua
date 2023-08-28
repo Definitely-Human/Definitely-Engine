@@ -22,17 +22,16 @@ include "Defen/vendor/imgui"
 
 project "Defen"
 	location "Defen"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "depch.h"
 	pchsource "Defen/src/depch.cpp"
-	
-	
-	staticruntime "off"
 
 	files
 	{
@@ -40,6 +39,10 @@ project "Defen"
 		"%{prj.name}/src/**.cpp",
 		"${prj.name}/vendor/glm/glm/**.hpp",
 		"${prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -61,7 +64,6 @@ project "Defen"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -70,40 +72,36 @@ project "Defen"
 			"DE_BUILD_DLL",
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
-
 	filter "configurations:Debug"
-		defines 
+		defines
 		{
 			"DE_DEBUG",
 			"DE_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "DE_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Debug"
 		defines "DE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
-	
-	staticruntime "off"
-	
+
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -124,7 +122,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -135,14 +132,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "DE_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "DE_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Debug"
 		defines "DE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

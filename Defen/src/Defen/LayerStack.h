@@ -22,6 +22,6 @@ namespace Defen
 		std::vector<Layer*>::iterator end() { return m_Layers.end(); }
 	private:
 		std::vector<Layer*> m_Layers;
-		unsigned int m_LayerInsertIndex;
+		unsigned int m_LayerInsertIndex = 0;
 	};
 }

@@ -2,10 +2,16 @@
 
 #ifdef DE_PLATFORM_WINDOWS
 
+#if DE_DYNAMIC_LINK
 #ifdef DE_BUILD_DLL
 #define DEFEN_API __declspec(dllexport)
 #else
 #define DEFEN_API __declspec(dllimport)
+#endif
+
+#else
+#define DEFEN_API
+
 #endif
 
 #else
