@@ -2,9 +2,7 @@
 #include "Application.h"
 #include "Defen/Events/ApplicationEvent.h"
 
-#include <glad/glad.h>
-
-#include "Input.h"
+#include "Renderer/Renderer.h"
 
 namespace Defen {
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
@@ -162,16 +160,18 @@ namespace Defen {
 
 			m_Window->OnUpdate();
 
-			glClearColor(0.1f, 0.1f, 0.15f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.15f, 1 });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_BlueShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->getIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVA);
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->getIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_VertexArray);
+
+			Renderer::EndScene();
 		}
 	}
 
