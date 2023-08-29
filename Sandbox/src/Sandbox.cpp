@@ -20,7 +20,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Defen::VertexBuffer> vertexBuffer;
+		Defen::Ref<Defen::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Defen::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		{
@@ -35,7 +35,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned int indices[3] = { 0,1,2 };
-		std::shared_ptr<Defen::IndexBuffer> indexBuffer;
+		Defen::Ref<Defen::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Defen::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -48,7 +48,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Defen::VertexBuffer> squareVB;
+		Defen::Ref<Defen::VertexBuffer> squareVB;
 		squareVB.reset(Defen::VertexBuffer::Create(verticesSquare, sizeof(verticesSquare)));
 		squareVB->SetLayout({
 				{Defen::ShaderDataType::Float3, "a_Position"}
@@ -56,7 +56,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		unsigned int squareIndices[6] = { 0,1,2,2,3,0 };
-		std::shared_ptr<Defen::IndexBuffer> squareIB;
+		Defen::Ref<Defen::IndexBuffer> squareIB;
 		squareIB.reset(Defen::IndexBuffer::Create(squareIndices, 6));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -200,11 +200,11 @@ public:
 		return false;
 	}
 private:
-	std::shared_ptr<Defen::Shader> m_Shader;
-	std::shared_ptr<Defen::VertexArray> m_VertexArray;
+	Defen::Ref<Defen::Shader> m_Shader;
+	Defen::Ref<Defen::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Defen::Shader> m_FlatShader;
-	std::shared_ptr<Defen::VertexArray> m_SquareVA;
+	Defen::Ref<Defen::Shader> m_FlatShader;
+	Defen::Ref<Defen::VertexArray> m_SquareVA;
 	glm::vec3 m_SquarePosition;
 
 	Defen::OrthographicCamera m_Camera;

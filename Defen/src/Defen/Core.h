@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef DE_PLATFORM_WINDOWS
 
 #if DE_DYNAMIC_LINK
@@ -32,3 +34,12 @@
 #define BIT(x) (1<<x)
 
 #define DE_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace Defen
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}
