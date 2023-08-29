@@ -146,6 +146,7 @@
     <ClInclude Include="src\Defen.h" />
     <ClInclude Include="src\Defen\Application.h" />
     <ClInclude Include="src\Defen\Core.h" />
+    <ClInclude Include="src\Defen\Core\Timestep.h" />
     <ClInclude Include="src\Defen\EntryPoint.h" />
     <ClInclude Include="src\Defen\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Defen\Events\Event.h" />

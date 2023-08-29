@@ -7,12 +7,10 @@
 #include "Events/ApplicationEvent.h"
 #include "Events/Event.h"
 #include "ImGui/ImGuiLayer.h"
+#include "Defen/Core/Timestep.h"
 
-#include "Defen/Renderer/Shader.h"
-#include "Renderer/Buffer.h"
 #include "Renderer/OrthographicCamera.h"
 #include "Renderer/VertexArray.h"
-#include "Defen/Renderer/OrthographicCamera.h"
 
 namespace Defen {
 	class DEFEN_API Application
@@ -31,10 +29,12 @@ namespace Defen {
 	private:
 		bool OnWindowClosed(WindowCloseEvent& e);
 
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 
 		static Application* s_Instance;
 	};

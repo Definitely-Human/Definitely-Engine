@@ -5,6 +5,7 @@
 #include "Defen/Application.h"
 #include "Defen/Log.h"
 #include "Defen/Layer.h"
+#include "Defen/Core/Timestep.h"
 
 #include "Defen/ImGui/ImGuiLayer.h"
 

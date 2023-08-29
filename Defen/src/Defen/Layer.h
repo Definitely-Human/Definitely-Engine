@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Core/Timestep.h"
 #include "Defen/Core.h"
 #include "Defen/Events/Event.h"
 
@@ -13,7 +14,7 @@ namespace Defen
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnEvent(Event& event) {}
 		virtual void OnImGuiRender() {}
 

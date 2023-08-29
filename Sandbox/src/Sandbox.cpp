@@ -125,41 +125,29 @@ public:
 		m_BlueShader.reset(new Defen::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
-	void MoveCamera()
+	void MoveCamera(Defen::Timestep ts)
 	{
 		if (Defen::Input::IsKeyPressed(DE_KEY_LEFT))
-		{
-			m_CameraPosition.x -= m_CameraMoveSpeed;
-		}
-
-		if (Defen::Input::IsKeyPressed(DE_KEY_RIGHT))
-		{
-			m_CameraPosition.x += m_CameraMoveSpeed;
-		}
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
+		else if (Defen::Input::IsKeyPressed(DE_KEY_RIGHT))
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 
 		if (Defen::Input::IsKeyPressed(DE_KEY_DOWN))
-		{
-			m_CameraPosition.y -= m_CameraMoveSpeed;
-		}
-
-		if (Defen::Input::IsKeyPressed(DE_KEY_UP))
-		{
-			m_CameraPosition.y += m_CameraMoveSpeed;
-		}
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
+		else if (Defen::Input::IsKeyPressed(DE_KEY_UP))
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 
 		if (Defen::Input::IsKeyPressed(DE_KEY_A))
-		{
-			m_CameraRotation += m_CameraRotationSpeed;
-		}
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 		else if (Defen::Input::IsKeyPressed(DE_KEY_D))
-		{
-			m_CameraRotation -= m_CameraRotationSpeed;
-		}
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Defen::Timestep ts) override
 	{
-		MoveCamera();
+		DE_TRACE("Delta time: {0} ({1}ms)", ts.GetSeconsds(), ts.GetMiliseconds());
+
+		MoveCamera(ts);
 		Defen::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.15f, 1 });
 		Defen::RenderCommand::Clear();
 
@@ -193,9 +181,9 @@ private:
 	Defen::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraRotation = 0;
-	float m_CameraRotationSpeed = 1.0f;
+	float m_CameraRotationSpeed = 50.0f;
 
-	float m_CameraMoveSpeed = 0.05f;
+	float m_CameraMoveSpeed = 3.0f;
 };
 
 class Sandbox : public Defen::Application
