@@ -10,7 +10,9 @@
 
 #include "Defen/Renderer/Shader.h"
 #include "Renderer/Buffer.h"
+#include "Renderer/OrthographicCamera.h"
 #include "Renderer/VertexArray.h"
+#include "Defen/Renderer/OrthographicCamera.h"
 
 namespace Defen {
 	class DEFEN_API Application
@@ -35,12 +37,6 @@ namespace Defen {
 		LayerStack m_LayerStack;
 
 		static Application* s_Instance;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
 	};
 
 	//To be defined in a client
