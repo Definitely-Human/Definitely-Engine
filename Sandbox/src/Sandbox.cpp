@@ -171,6 +171,7 @@ public:
 		m_TextureShader.reset(Defen::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 
 		m_Texture = Defen::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_TextureTransparent = Defen::Texture2D::Create("assets/textures/transparent.png");
 
 		std::dynamic_pointer_cast<Defen::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Defen::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -222,7 +223,8 @@ public:
 
 		m_Texture->Bind();
 		Defen::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-
+		m_TextureTransparent->Bind();
+		Defen::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		//Defen::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Defen::Renderer::EndScene();
@@ -252,7 +254,7 @@ private:
 	Defen::Ref<Defen::Shader> m_FlatShader;
 	Defen::Ref<Defen::Shader> m_TextureShader;
 
-	Defen::Ref<Defen::Texture2D> m_Texture;
+	Defen::Ref<Defen::Texture2D> m_Texture, m_TextureTransparent;
 
 	Defen::Ref<Defen::VertexArray> m_SquareVA;
 	glm::vec3 m_SquarePosition;
