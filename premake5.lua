@@ -15,6 +15,7 @@ IncludeDir["GLFW"] = "Defen/vendor/GLFW/include"
 IncludeDir["Glad"] = "Defen/vendor/Glad/include"
 IncludeDir["ImGui"] = "Defen/vendor/imgui"
 IncludeDir["glm"] = "Defen/vendor/glm"
+IncludeDir["stb_image"] = "Defen/vendor/stb_image"
 
 include "Defen/vendor/GLFW"
 include "Defen/vendor/Glad"
@@ -37,8 +38,10 @@ project "Defen"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-		"${prj.name}/vendor/glm/glm/**.hpp",
-		"${prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	defines{
@@ -52,7 +55,8 @@ project "Defen"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links

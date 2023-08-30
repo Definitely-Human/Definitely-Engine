@@ -41,17 +41,18 @@ public:
 
 		m_SquareVA.reset(Defen::VertexArray::Create());
 
-		float verticesSquare[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float verticesSquare[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0, 0.0,
+			 0.5f, -0.5f, 0.0f, 1.0, 0.0,
+			 0.5f,  0.5f, 0.0f, 1.0, 1.0,
+			-0.5f,  0.5f, 0.0f, 0.0, 1.0
 		};
 
 		Defen::Ref<Defen::VertexBuffer> squareVB;
 		squareVB.reset(Defen::VertexBuffer::Create(verticesSquare, sizeof(verticesSquare)));
 		squareVB->SetLayout({
-				{Defen::ShaderDataType::Float3, "a_Position"}
+				{Defen::ShaderDataType::Float3, "a_Position"},
+				{Defen::ShaderDataType::Float2, "a_TexCoord"}
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -132,6 +133,47 @@ public:
 		)";
 
 		m_FlatShader.reset(Defen::Shader::Create(flatShaderVertexSrc, flatShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+			}
+
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
+
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+
+		)";
+
+		m_TextureShader.reset(Defen::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Defen::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Defen::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Defen::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void MoveCamera(Defen::Timestep ts)
@@ -177,7 +219,11 @@ public:
 				Defen::Renderer::Submit(m_FlatShader, m_SquareVA, transform);
 			}
 		}
-		Defen::Renderer::Submit(m_Shader, m_VertexArray);
+
+		m_Texture->Bind();
+		Defen::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		//Defen::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Defen::Renderer::EndScene();
 	}
@@ -204,6 +250,10 @@ private:
 	Defen::Ref<Defen::VertexArray> m_VertexArray;
 
 	Defen::Ref<Defen::Shader> m_FlatShader;
+	Defen::Ref<Defen::Shader> m_TextureShader;
+
+	Defen::Ref<Defen::Texture2D> m_Texture;
+
 	Defen::Ref<Defen::VertexArray> m_SquareVA;
 	glm::vec3 m_SquarePosition;
 

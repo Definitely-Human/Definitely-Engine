@@ -19,6 +19,7 @@
 
 #include "Defen/Renderer/Buffer.h"
 #include "Defen/Renderer/Shader.h"
+#include "Defen/Renderer/Texture.h"
 #include "Defen/Renderer/VertexArray.h"
 
 #include "Defen/Renderer/OrthographicCamera.h"
